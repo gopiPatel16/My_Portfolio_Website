@@ -127,9 +127,14 @@ A one-off deploy without the GitHub integration:
 npx vercel deploy --prod
 ```
 
-Before going live, replace the `https://gopipatel.dev/` placeholder in
-`index.html` with the real address — it appears four times: the canonical link,
-`og:url`, and `url` and `image` in the JSON-LD `Person` block.
+The address is written into `index.html` (canonical link, `og:url`, `og:image`,
+`twitter:image`, and `url` and `image` in the JSON-LD `Person` block), into
+`public/robots.txt`, and into `scripts/sitemap.mjs`. Change it in those three
+places and re-run the sitemap:
+
+```bash
+node scripts/sitemap.mjs
+```
 
 `dist/` is around 25 MB, most of it the ten report PDFs and the four prompt
 videos. Those are only fetched on demand, so they do not affect page load.
