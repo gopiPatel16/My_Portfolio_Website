@@ -110,16 +110,26 @@ clip`, which clips without creating a scroll container.
 
 ## Deployment
 
-Static output. `vercel.json` handles the SPA rewrite for `/projects/:slug` and
-sets immutable caching on `/assets`, `/img` and `/shots`.
+Static output, deployed on Vercel from this folder. The repository root is one
+level up, so the Vercel project's **Root Directory must be set to `portfolio`**
+— everything else (framework preset Vite, `npm run build`, output `dist`) is
+detected. No environment variables.
+
+`vercel.json` sends anything that is not a real file to `index.html`, which is
+what makes `/projects/:slug` work on a cold load; Vercel matches the filesystem
+before it applies a rewrite, so the PDFs, videos and screenshots under `public/`
+are still served as themselves. It also sets immutable caching on `/assets`,
+`/img` and `/shots`.
+
+A one-off deploy without the GitHub integration:
 
 ```bash
 npx vercel deploy --prod
 ```
 
 Before going live, replace the `https://gopipatel.dev/` placeholder in
-`index.html` — it appears in the canonical link, Open Graph, Twitter card and
-the JSON-LD `Person` block.
+`index.html` with the real address — it appears four times: the canonical link,
+`og:url`, and `url` and `image` in the JSON-LD `Person` block.
 
-`dist/` is around 25 MB, most of it the nine report PDFs and the four prompt
+`dist/` is around 25 MB, most of it the ten report PDFs and the four prompt
 videos. Those are only fetched on demand, so they do not affect page load.
