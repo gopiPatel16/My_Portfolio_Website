@@ -1,0 +1,13 @@
+import puppeteer from 'puppeteer-core'
+const b=await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:'new',args:['--hide-scrollbars'],defaultViewport:{width:1440,height:900}})
+const p=await b.newPage()
+await p.goto('http://localhost:5180/',{waitUntil:'domcontentloaded'})
+await new Promise(r=>setTimeout(r,1800))
+await p.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';document.getElementById('prompts').scrollIntoView()})
+await new Promise(r=>setTimeout(r,900))
+await p.evaluate(()=>document.querySelectorAll('#prompts [role="tab"]')[10].click())
+await new Promise(r=>setTimeout(r,1400))
+await p.evaluate(()=>window.scrollBy(0,260))
+await new Promise(r=>setTimeout(r,700))
+await p.screenshot({path:'C:/Users/USER/AppData/Local/Temp/claude/shots/prompt-text.png'})
+await b.close()

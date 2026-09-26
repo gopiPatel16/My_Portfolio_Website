@@ -1,0 +1,5 @@
+# This repository publishes the website only. Everything else in this folder —
+# source media, report sources, personal documents — stays on the machine.
+/*
+!/.gitignore
+!/portfolio/

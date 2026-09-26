@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Design tokens
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Ground — near-black through deep navy. */
+  --color-ink-950: #05040d;
+  --color-ink-900: #080714;
+  --color-ink-850: #0c0b1d;
+  --color-ink-800: #121027;
+  --color-ink-700: #1b1838;
+
+  /* Type — soft white through to a dim slate. */
+  --color-paper-50: #f5f6fa;
+  --color-paper-200: #c4c7db;
+  --color-paper-400: #9295b0;
+  --color-paper-600: #676a86;
+  --color-paper-800: #3d4059;
+
+  /* Two accents: electric blue and electric purple. */
+  --color-azure-400: #6b8fff;
+  --color-azure-500: #4c6fff;
+  --color-azure-600: #3355e6;
+  --color-iris-300: #c9a3ff;
+  --color-iris-400: #a855f7;
+  --color-iris-500: #8b5cf6;
+  --color-iris-600: #7132e0;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    --edge: color-mix(in oklab, var(--color-iris-500) 17%, transparent);
+    --edge-strong: color-mix(in oklab, var(--color-iris-500) 34%, transparent);
+    --shell: 1400px;
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    color-scheme: dark;
+  }
+
+  * { border-color: var(--edge); }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    /* `clip`, never `hidden`: `hidden` makes it a scroll container and
+       silently breaks every `position: sticky` on the page. */
+    overflow-x: clip;
+  }
+
+  body {
+    background: var(--color-ink-950);
+    color: var(--color-paper-50);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-iris-500) 40%, transparent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-azure-400);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+  }
+
+  .h-section {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-paper-600);
+  }
+
+  /* Blue → purple, the site's one gradient. */
+  .text-grad {
+    background: linear-gradient(100deg, var(--color-azure-400), var(--color-iris-400) 58%, var(--color-iris-300));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Descenders fall outside the painted box without this. */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+
+  .btn-grad {
+    background: linear-gradient(100deg, var(--color-azure-500), var(--color-iris-500) 60%, var(--color-iris-400));
+    box-shadow: 0 12px 36px -14px color-mix(in oklab, var(--color-iris-500) 90%, transparent);
+  }
+
+  /* The one card treatment used across the site. */
+  .panel {
+    position: relative;
+    background:
+      linear-gradient(158deg,
+        color-mix(in oklab, var(--color-iris-500) 7%, transparent),
+        transparent 58%);
+    background-color: color-mix(in oklab, var(--color-ink-850) 78%, transparent);
+    border: 1px solid var(--edge);
+    border-radius: 18px;
+  }
+
+  .panel-hover {
+    transition: border-color .45s var(--ease-out-quint), transform .45s var(--ease-out-quint);
+  }
+  .panel-hover:hover {
+    border-color: var(--edge-strong);
+    transform: translateY(-3px);
+  }
+
+  /* Fine technical grain, kept far below the noise floor. */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+  .mask-b {
+    -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+  }
+}
+
+@keyframes scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%      { transform: translateY(9px); opacity: 0.3; }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 1; }
+}
+@keyframes drift-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
