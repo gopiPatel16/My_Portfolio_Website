@@ -7,7 +7,7 @@ export const profile = {
   email: 'patelgopiii16@gmail.com',
   phone: '6260301778',
   phoneHref: '+916260301778',
-  linkedin: 'https://www.linkedin.com/in/gopi-patidar-33b0a1419/',
+  linkedin: 'https://www.linkedin.com/in/gopi-patel-33b0a1419',
   github: 'https://github.com/gopiPatel16',
   githubUser: 'gopiPatel16',
 
