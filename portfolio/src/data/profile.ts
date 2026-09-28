@@ -12,10 +12,9 @@ export const profile = {
   githubUser: 'gopiPatel16',
 
   /**
-   * Client work, as stated by Gopi: PrimeGold, Operate, DocVault, Bharti
-   * Engineering and VanWood. The last of those is not among the projects
-   * listed on the site, so this figure is a declared one, not derived from
-   * the project data.
+   * Client work, as stated by Gopi: PrimeGold, Operate, DocVault, RK Industries
+   * and Bharti Engineering. The project data does not mark which entries were
+   * for clients, so this is a declared figure, not a derived one.
    */
   clientProjects: 5,
 

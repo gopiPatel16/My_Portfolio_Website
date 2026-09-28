@@ -1,8 +1,9 @@
 import puppeteer from 'puppeteer-core'
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, readFileSync } from 'node:fs'
 const OUT='C:/Users/USER/AppData/Local/Temp/claude/shots/routes'
 mkdirSync(OUT,{recursive:true})
-const slugs=['knowledge-assistant','gameverse','primegold','gk-master','vault','docvault','sugar-rush','operate','abyssal-ventures','bharti-engineering']
+// Read the slugs from the data so a new project is never silently skipped.
+const slugs=[...readFileSync('src/data/projects.ts','utf8').matchAll(/^\s{4}slug: '([a-z0-9-]+)',$/gm)].map(m=>m[1])
 const b=await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:'new',args:['--hide-scrollbars'],defaultViewport:{width:1440,height:900}})
 const rows=[]
 for(const slug of slugs){

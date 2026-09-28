@@ -265,6 +265,18 @@ function ProjectCard({ project, list = false }: { project: Project; list?: boole
 
 /* ------------------------------------------------------------------ */
 
+/** Counts in the standfirst come from the data, so they cannot drift. */
+const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+  'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty']
+const word = (n: number) => WORDS[n] ?? String(n)
+/** Same, capitalised — for the start of a sentence. */
+const Word = (n: number) => {
+  const w = word(n)
+  return w.charAt(0).toUpperCase() + w.slice(1)
+}
+const withReport = projects.filter((p) => p.report).length
+const fromRunningApp = projects.filter((p) => p.liveCaptured).length
+
 export function Work() {
   const [filter, setFilter] = useState<(typeof CATEGORIES)[number]>('All')
   const [sort, setSort] = useState<(typeof SORTS)[number]>('Featured first')
@@ -307,9 +319,9 @@ export function Work() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-[46ch] text-[14.5px] leading-relaxed text-paper-400">
-                Ten projects across GenAI, web and software — each with a full case study, and
-                nine with a technical report behind them. Three were captured from the applications
-                running locally.
+                {Word(projects.length)} projects across GenAI, web and software — each with a full
+                case study, and {word(withReport)} with a technical report behind them.{' '}
+                {Word(fromRunningApp)} were captured from the applications running.
               </p>
             </Reveal>
             <Reveal delay={0.15}>

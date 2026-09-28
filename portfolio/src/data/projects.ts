@@ -556,6 +556,98 @@ export const projects: Project[] = [
 
   /* ---------------------------------------------------------------- */
   {
+    slug: 'rk-industries',
+    live: 'https://rkindustries-rust.vercel.app/',
+    name: 'RK Industries',
+    tagline:
+      'A client’s single-page site for a door factory — where the manufacturing floor is the story, and the quote request lands on WhatsApp.',
+    year: '2026',
+    kind: 'Client web · manufacturing',
+    category: 'Web',
+    liveCaptured: true,
+    cover: P('rk-industries', 'hero'),
+    coverAlt: 'The वanWood hero — a lit flush door in a dark interior, with the product range called out around it',
+    images: [
+      {
+        src: P('rk-industries', 'hero'),
+        alt: 'Dark cinematic hero with a lit flush door and labelled callouts for flush door, plywood and block board',
+        frame: 'browser',
+        caption: 'The door is the hero, lit in a dark room. Captured from the live site.',
+      },
+      {
+        src: P('rk-industries', 'configurator'),
+        alt: 'Door configurator with wood type, frame type, and size, thickness and quantity fields',
+        frame: 'browser',
+        caption: 'Compose a door — wood, frame, as many sizes as you need — then send it straight to the works.',
+      },
+      {
+        src: P('rk-industries', 'process'),
+        alt: 'Scroll-scrubbed process step 05, Core Filling, with an illustrated door cross-section',
+        frame: 'browser',
+        caption: 'Scrolling walks you through the factory floor, one station at a time.',
+      },
+      {
+        src: P('rk-industries', 'gallery'),
+        alt: 'Filterable gallery of photographs from the factory floor',
+        frame: 'browser',
+        caption: 'Real photographs from the works, filterable by stage — no stock imagery anywhere.',
+      },
+      {
+        src: P('rk-industries', 'factory'),
+        alt: 'Pinned factory section showing the works in a scroll-driven carousel',
+        frame: 'browser',
+        caption: 'The factory section is pinned and scrubbed by scroll position.',
+      },
+      {
+        src: P('rk-industries', 'mobile-hero'),
+        alt: 'The site on a mobile viewport',
+        frame: 'phone',
+        caption: 'The same site at 390px.',
+      },
+    ],
+    problem:
+      'A flush-door and plywood manufacturer in Birgaon, Raipur — trading as वanWood — sells a product nobody can judge from a catalogue photograph. What makes their door worth more than the cheap one is what happens inside the factory, and none of that was visible anywhere.',
+    idea:
+      'Make the factory the pitch. Then give a builder a way to specify exactly the door they want and send it to the works without opening an email client.',
+    approach:
+      'One page, no routes. Scrolling is the interface: the manufacturing process is a pinned, scroll-scrubbed sequence that walks through the stations a door passes through, and the gallery is photographs taken on the floor rather than stock imagery. The door itself is drawn in CSS — five finishes, three handle styles, three inlays — so the configurator can repaint it instantly with nothing to download.',
+    result:
+      'A single page of eleven sections in 38 files and 5,075 lines. The configurator collects wood, frame, and any number of size/thickness/quantity rows, then posts the quotation to the works’ WhatsApp from the server — so the customer never leaves the page and never has to have WhatsApp installed. Every company detail on the site reads from one config file.',
+    contribution:
+      'Built and delivered the whole site for the client: the scroll architecture, the CSS door, the configurator and its quotation format, the WhatsApp delivery route, the photograph pipeline, and the single brand-config file the client can edit without touching a component.',
+    features: [
+      'Pinned, scroll-scrubbed walk through the manufacturing process',
+      'Door configurator — wood, frame, and as many size rows as the job needs',
+      'Quotation delivered to the works’ WhatsApp server-side, with a per-IP rate limit',
+      'The door is CSS, not an image — five finishes repaint instantly',
+      'Gallery of real factory photographs, filterable by stage',
+      'A station with no photograph yet shows a labelled placeholder rather than being skipped',
+      'Every brand detail — name, contact, hours, GSTIN — lives in one file',
+      'Lenis smooth scroll and the scroll animations both switch off under prefers-reduced-motion',
+    ],
+    stack: [
+      'Next.js 16', 'React 19', 'TypeScript', 'TailwindCSS v4', 'GSAP ScrollTrigger',
+      'Framer Motion', 'Lenis', 'React Three Fiber', 'WhatsApp Cloud API', 'Vercel',
+    ],
+    metrics: [
+      { value: '11', label: 'Page sections' },
+      { value: '5.1k', label: 'Lines of code' },
+      { value: '12', label: 'Factory photographs' },
+      { value: '1', label: 'Page, no routes' },
+    ],
+    aiWorkflow: [
+      'Wrote the brand and the factory story down first — what the door is made of, station by station — so the sections had something true to be built around.',
+      'Built it section by section with Claude Code against a live preview, keeping the scroll behaviour and the reduced-motion path in step.',
+      'Generated the door as CSS gradients and SVG turbulence rather than shipping renders, so a finish change costs nothing.',
+      'Kept every client-editable value in one config file, because the person maintaining it after me is not a developer.',
+    ],
+    challenges:
+      'A pinned, scroll-scrubbed section is the easiest way to make a page feel expensive and the easiest way to trap someone on a phone. The process section keeps a visible “Skip this section” control, and under prefers-reduced-motion the smooth scrolling never starts at all.',
+    source: 'https://github.com/gopiPatel16/RK_Industries',
+  },
+
+  /* ---------------------------------------------------------------- */
+  {
     slug: 'operate',
     name: 'Operate',
     tagline: 'An ongoing client build: a company management system where routes are closed by default and authorisation is checked twice, two different ways.',
