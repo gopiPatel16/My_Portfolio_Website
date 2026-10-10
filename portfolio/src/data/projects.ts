@@ -458,7 +458,7 @@ export const projects: Project[] = [
   {
     slug: 'docvault',
     name: 'DocVault',
-    tagline: 'A client’s Android document vault that makes no network calls of any kind — and says plainly what that costs you.',
+    tagline: 'An Android document vault that makes no network calls of any kind — and says plainly what that costs you.',
     year: '2026',
     kind: 'Android / Flutter',
     category: 'Software',
@@ -472,14 +472,14 @@ export const projects: Project[] = [
       { src: P('docvault', 'activity'), alt: 'Activity log screen', frame: 'phone', caption: 'A local activity log — nothing leaves the device.' },
     ],
     problem:
-      'A client wanted their business paperwork — licences, agreements, bills and statements — off the phone’s gallery and downloads folder, without it going anywhere near a cloud account. Passports, deeds and policies are exactly the documents people are least willing to upload, and exactly the ones every storage app wants to sync.',
+      'The business needed its paperwork — licences, agreements, bills and statements — off the phone’s gallery and downloads folder, without it going anywhere near a cloud account. Passports, deeds and policies are exactly the documents people are least willing to upload, and exactly the ones every storage app wants to sync.',
     idea: 'Remove the network entirely, and be honest about the consequence.',
     approach:
       'Every document is sealed with AES-256-GCM before it reaches storage, under a key wrapped by a PBKDF2-stretched PIN and held by the Android Keystore. Documents that matter most take a second encryption layer under a separate PIN. The app auto-locks the moment it leaves the foreground — suppressed only while a picker the app itself opened is on screen.',
     result:
       'Ten releases, from 1.0.0 to v1.6.2 (build 10), for Android 7.0+ — 38 Dart files and 7,551 lines, 152 lines of Kotlin for the two things Flutter plugins do not cover, 60 tests in 5 suites, and no static-analysis issues. Distributed as a signed APK from a download link, not yet on Google Play. The report states the trade-off openly: the vault is excluded from Android backup, and losing both the PIN and the recovery key leaves the documents unreadable — a consequence of the security model, not an oversight.',
     contribution:
-      'Built for a client and delivered to them directly as a signed APK: the entire application — crypto and key handling, three schema versions and their migrations, the screens, the signed release pipeline across ten builds, and a plain-language install guide written for a non-technical reader.',
+      'Built in-house and delivered as a signed APK: the entire application — crypto and key handling, three schema versions and their migrations, the screens, the signed release pipeline across ten builds, and a plain-language install guide written for a non-technical reader.',
     features: [
       'Six-digit PIN with optional fingerprint or face unlock',
       'AES-256-GCM per document, key wrapped under a PBKDF2-stretched PIN',
@@ -560,9 +560,9 @@ export const projects: Project[] = [
     live: 'https://rkindustries-rust.vercel.app/',
     name: 'RK Industries',
     tagline:
-      'A client’s single-page site for a door factory — where the manufacturing floor is the story, and the quote request lands on WhatsApp.',
+      'The company website, built in-house — where the manufacturing floor is the story, and the quote request lands on WhatsApp.',
     year: '2026',
-    kind: 'Client web · manufacturing',
+    kind: 'Company web · manufacturing',
     category: 'Web',
     liveCaptured: true,
     cover: P('rk-industries', 'hero'),
@@ -614,7 +614,7 @@ export const projects: Project[] = [
     result:
       'A single page of eleven sections in 38 files and 5,075 lines. The configurator collects wood, frame, and any number of size/thickness/quantity rows, then posts the quotation to the works’ WhatsApp from the server — so the customer never leaves the page and never has to have WhatsApp installed. Every company detail on the site reads from one config file.',
     contribution:
-      'Built and delivered the whole site for the client: the scroll architecture, the CSS door, the configurator and its quotation format, the WhatsApp delivery route, the photograph pipeline, and the single brand-config file the client can edit without touching a component.',
+      'Built and delivered the whole site in-house: the scroll architecture, the CSS door, the configurator and its quotation format, the WhatsApp delivery route, the photograph pipeline, and the single brand-config file the business can edit without touching a component.',
     features: [
       'Pinned, scroll-scrubbed walk through the manufacturing process',
       'Door configurator — wood, frame, and as many size rows as the job needs',
@@ -650,7 +650,7 @@ export const projects: Project[] = [
   {
     slug: 'operate',
     name: 'Operate',
-    tagline: 'An ongoing client build: a company management system where routes are closed by default and authorisation is checked twice, two different ways.',
+    tagline: 'An in-house build, still in progress: a company management system where routes are closed by default and authorisation is checked twice, two different ways.',
     year: '2026',
     kind: 'Enterprise web app',
     category: 'Software',
@@ -743,7 +743,7 @@ export const projects: Project[] = [
     slug: 'bharti-engineering',
     live: 'https://bharti-engineering.vercel.app/',
     name: 'Bharti Engineering & Construction',
-    tagline: 'A client’s corporate marketing site in two files — and a full technical, design and content audit of it.',
+    tagline: 'A freelance corporate marketing site in two files — and a full technical, design and content audit of it.',
     year: '2026',
     kind: 'Static web',
     category: 'Web',

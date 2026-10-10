@@ -205,7 +205,9 @@ export function CinematicHero() {
           <div className="grid grid-cols-2 items-end gap-x-6 gap-y-5 md:grid-cols-[1fr_auto_1fr]">
             <div className="order-2 space-y-2 md:order-1">
               <p className={`${meta} whitespace-nowrap text-paper-200`}>{projects.length} PROJECTS BUILT</p>
-              <p className={`${meta} whitespace-nowrap`}>{profile.clientProjects} CLIENT PROJECTS</p>
+              <p className={`${meta} whitespace-nowrap`}>
+                {profile.freelanceProjects} FREELANCE PROJECT{profile.freelanceProjects === 1 ? '' : 'S'}
+              </p>
             </div>
 
             <div className="order-1 col-span-2 flex items-center justify-center gap-2.5 md:order-2 md:col-span-1">

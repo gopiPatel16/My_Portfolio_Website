@@ -13,7 +13,56 @@
 
 export type Doc = { src: string; title: string }
 
-export const experience = [
+export type Job = {
+  year: string
+  role: string
+  org: string
+  place: string
+  term: string
+  /** The responsibilities, where a document sets them out. */
+  scope?: string[]
+  /** The document behind the entry, where there is one to show on the site. */
+  doc?: Doc
+  photo?: {
+    kind: 'image'
+    src: string
+    thumb: string
+    title: string
+    /** Only where a PDF exists to hand over; otherwise the reader just shows it. */
+    downloadSrc?: string
+    download?: string
+    width: number
+    height: number
+  }
+}
+
+export const experience: Job[] = [
+  {
+    year: '2025',
+    role: 'Full Stack AI Engineer',
+    org: 'RK Industries (Radha Krishna Industries)',
+    place: 'Raipur, Chhattisgarh · Remote',
+    term: '4 August 2025 — 16 August 2026',
+    /** The four systems built in the role, as stated by Gopi. */
+    scope: [
+      'Built the company website — a single-page site with a door configurator that sends quotations straight to the works',
+      'Built PrimeGold, the self-hosted accounting, GST and inventory system now in daily use',
+      'Built Operate, the order book, employee task and order traceability system',
+      'Built DocVault, the encrypted offline Android document vault',
+    ],
+    /**
+     * The signed letter, supplied as an image rather than a PDF — so the reader
+     * shows it full size with no Download button until a PDF is available.
+     */
+    photo: {
+      kind: 'image' as const,
+      src: '/credentials/rk-industries-offer-letter.webp',
+      thumb: '/credentials/rk-industries-offer-letter-thumb.webp',
+      title: 'RK Industries — offer of employment',
+      width: 1024,
+      height: 1536,
+    },
+  },
   {
     year: '2025',
     role: 'Web Development Intern',

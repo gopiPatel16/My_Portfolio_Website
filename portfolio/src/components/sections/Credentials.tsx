@@ -78,26 +78,30 @@ export function EducationExperience() {
                   <p className="mt-1.5 text-[14px] text-paper-400">
                     {job.org} — {job.place}
                   </p>
-                  <ul className="mt-5 space-y-1.5">
-                    {job.scope.map((line) => (
-                      <li key={line} className="flex gap-2.5 text-[13.5px] leading-relaxed text-paper-200">
-                        <span aria-hidden className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-iris-400" />
-                        {line}
-                      </li>
-                    ))}
-                  </ul>
+                  {job.scope && (
+                    <ul className="mt-5 space-y-1.5">
+                      {job.scope.map((line) => (
+                        <li key={line} className="flex gap-2.5 text-[13.5px] leading-relaxed text-paper-200">
+                          <span aria-hidden className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-iris-400" />
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <div className="flex flex-col gap-4 md:col-span-3 md:items-end md:text-right">
                   <p className="label leading-relaxed">{job.term}</p>
                   {/* The letter itself, as a sheet of paper: click it to read
-                      it full size. */}
-                  <DocPhoto
-                    doc={job.photo}
-                    thumb={job.photo.thumb}
-                    caption="Offer letter"
-                    alt={`Offer letter from ${job.org}`}
-                    label="Open my offer letter full size"
-                  />
+                      it full size. Only where there is a document to show. */}
+                  {job.photo && (
+                    <DocPhoto
+                      doc={job.photo}
+                      thumb={job.photo.thumb}
+                      caption="Offer letter"
+                      alt={`Offer letter from ${job.org}`}
+                      label="Open my offer letter full size"
+                    />
+                  )}
                 </div>
               </div>
             </Reveal>
