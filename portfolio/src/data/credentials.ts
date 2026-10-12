@@ -38,6 +38,27 @@ export type Job = {
 
 export const experience: Job[] = [
   {
+    year: '2026',
+    role: 'Self-Employed Freelancer',
+    org: 'Independent',
+    place: 'Raipur, Chhattisgarh · Remote',
+    term: '14 August 2026 — present',
+    /**
+     * Everything not built in the RK Industries role. Only Bharti Engineering
+     * is marked as paid freelance work; the rest are independent builds, since
+     * nothing records a client for them.
+     */
+    scope: [
+      'Freelance: Bharti Engineering — a corporate site in two files, delivered with a 28-page technical, design and accessibility audit',
+      'Enterprise Multi-Agent Knowledge Assistant — an eight-agent LangGraph platform answering questions from company documents, with citations and department-level access control enforced in code. 108 tests',
+      'GAMEVERSE — one React shell that repaints into three game worlds from a single attribute, serving 118 media assets from a generated manifest',
+      'GK Master — an offline-first learning PWA with adaptive practice, spaced revision and statistics that refuse to report an accuracy they cannot support. 166 tests',
+      'Vault — a self-hosted document vault where being signed in and being allowed to read are two separate secrets. 117 tests',
+      'Sugar Rush — a three-role ordering platform rebuilt from a PHP original, with every server action re-checking the role. 27 routes',
+      'Abyssal Ventures — a scroll-dive site: 318 generated frames scrubbed against one scroll value, with no build step at all',
+    ],
+  },
+  {
     year: '2025',
     role: 'Full Stack AI Engineer',
     org: 'RK Industries (Radha Krishna Industries)',
