@@ -93,6 +93,7 @@ export function Nav() {
   const onHome = pathname === '/'
   const active = useActiveSection(onHome ? NAV_IDS : [])
   const compact = useScrolledPast(40)
+  const reduced = useReducedMotion()
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -188,42 +189,57 @@ export function Nav() {
         </div>
       </header>
 
+      {/* A drawer off the right edge rather than a full screen takeover: the
+          page stays visible behind it, so you keep your place on the page. */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            className="fixed inset-0 z-70 bg-ink-950/97 backdrop-blur-xl min-[1024px]:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.26 }}
-          >
-            <div className="shell flex h-full flex-col pt-6 pb-10">
+          <>
+            <motion.div
+              className="fixed inset-0 z-70 bg-ink-950/70 backdrop-blur-sm min-[1024px]:hidden"
+              initial={reduced ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={reduced ? undefined : { opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              onClick={() => setOpen(false)}
+              aria-hidden
+            />
+
+            <motion.div
+              className="fixed right-0 top-0 z-80 flex h-full w-[min(19rem,82vw)] flex-col border-l border-[var(--edge-strong)] bg-ink-950/98 px-6 pt-6 pb-8 shadow-[-18px_0_50px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl min-[1024px]:hidden"
+              initial={reduced ? false : { x: '100%' }}
+              animate={{ x: 0 }}
+              exit={reduced ? undefined : { x: '100%' }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu"
+            >
               <div className="flex items-center justify-between">
                 <Wordmark />
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
-                  className="grid h-10 w-10 place-items-center rounded-full border border-[var(--edge-strong)] text-paper-200"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-[var(--edge-strong)] text-paper-200 transition-colors hover:border-iris-400 hover:text-paper-50"
                 >
-                  <X size={17} strokeWidth={1.8} />
+                  <X size={16} strokeWidth={1.8} />
                 </button>
               </div>
 
-              <ul className="mt-8 flex flex-1 flex-col justify-center gap-0.5">
+              <ul className="mt-7 flex flex-1 flex-col justify-center">
                 {navItems.map((item, i) => (
                   <motion.li
                     key={item.id}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.05 + i * 0.04, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    initial={reduced ? false : { opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.06 + i * 0.035, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <a
                       href={href(item.id)}
                       onClick={() => setOpen(false)}
-                      className="display flex items-baseline gap-4 border-b border-[var(--edge)] py-3.5 text-[1.7rem] text-paper-50"
+                      className="display flex items-baseline gap-3 border-b border-[var(--edge)] py-3 text-[1.15rem] text-paper-50 transition-colors hover:text-iris-300"
                     >
-                      <span className="font-mono text-[11px] font-normal text-iris-400">
+                      <span className="font-mono text-[10px] font-normal text-iris-400">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       {item.label}
@@ -232,13 +248,13 @@ export function Nav() {
                 ))}
               </ul>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-6 font-mono text-[11px] tracking-wide text-paper-600">
-                <a href={profile.linkedin} target="_blank" rel="noreferrer noopener">LINKEDIN</a>
-                <a href={profile.github} target="_blank" rel="noreferrer noopener">GITHUB</a>
-                <a href={`mailto:${profile.email}`}>EMAIL</a>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 pt-6 font-mono text-[11px] tracking-wide text-paper-600">
+                <a href={profile.linkedin} target="_blank" rel="noreferrer noopener" className="transition-colors hover:text-paper-50">LINKEDIN</a>
+                <a href={profile.github} target="_blank" rel="noreferrer noopener" className="transition-colors hover:text-paper-50">GITHUB</a>
+                <a href={`mailto:${profile.email}`} className="transition-colors hover:text-paper-50">EMAIL</a>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
