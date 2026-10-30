@@ -39,29 +39,18 @@ export type Job = {
 export const experience: Job[] = [
   {
     year: '2025',
-    role: 'Full Stack AI Engineer',
-    org: 'RK Industries (Radha Krishna Industries)',
+    role: 'Freelance AI & Full-Stack Developer',
+    org: 'Self-employed',
     place: 'Raipur, Chhattisgarh · Remote',
-    term: '4 August 2025 — 16 August 2026',
-    /** The four systems built in the role, as stated by Gopi. */
+    term: 'July 2025 — Present',
+    /** Client work, as stated by Gopi. */
     scope: [
-      'Built the company website — a single-page site with a door configurator that sends quotations straight to the works',
-      'Built PrimeGold, the self-hosted accounting, GST and inventory system now in daily use',
-      'Built Operate, the order book, employee task and order traceability system',
-      'Built DocVault, the encrypted offline Android document vault',
+      'RADHAVAN (RK Industries): built the company website — a single-page site with a door configurator that sends quotations straight to the works',
+      'RADHAVAN (RK Industries): built PrimeGold, the self-hosted accounting, GST and inventory system now in daily use',
+      'RADHAVAN (RK Industries): delivered Operate, the order book, employee task and order traceability system',
+      'RADHAVAN (RK Industries): built DocVault, the encrypted offline Android document vault',
+      'Bharti Engineering & Construction: designed and launched the corporate website with 28 pages of technical documentation',
     ],
-    /**
-     * The signed letter, supplied as an image rather than a PDF — so the reader
-     * shows it full size with no Download button until a PDF is available.
-     */
-    photo: {
-      kind: 'image' as const,
-      src: '/credentials/rk-industries-offer-letter.webp',
-      thumb: '/credentials/rk-industries-offer-letter-thumb.webp',
-      title: 'RK Industries — offer of employment',
-      width: 1024,
-      height: 1536,
-    },
   },
   {
     year: '2025',
