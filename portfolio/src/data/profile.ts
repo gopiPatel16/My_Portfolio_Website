@@ -12,12 +12,11 @@ export const profile = {
   githubUser: 'gopiPatel16',
 
   /**
-   * Freelance work, as stated by Gopi: Bharti Engineering only. The company
-   * website, PrimeGold, Operate and DocVault were all built in-house during the
-   * RK Industries role, so they are employment work rather than client work.
-   * The project data does not mark this, so it is a declared figure.
+   * Freelance client projects, as stated by Gopi: for RADHAVAN (RK Industries)
+   * the company website, PrimeGold, Operate and DocVault; for Bharti
+   * Engineering & Construction the corporate website. A declared figure.
    */
-  freelanceProjects: 1,
+  freelanceProjects: 5,
 
   /** Built from the resume script; the site serves a copy of the same PDF. */
   resume: {
