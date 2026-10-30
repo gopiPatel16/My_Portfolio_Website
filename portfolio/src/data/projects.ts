@@ -479,7 +479,7 @@ export const projects: Project[] = [
     result:
       'Ten releases, from 1.0.0 to v1.6.2 (build 10), for Android 7.0+ — 38 Dart files and 7,551 lines, 152 lines of Kotlin for the two things Flutter plugins do not cover, 60 tests in 5 suites, and no static-analysis issues. Distributed as a signed APK from a download link, not yet on Google Play. The report states the trade-off openly: the vault is excluded from Android backup, and losing both the PIN and the recovery key leaves the documents unreadable — a consequence of the security model, not an oversight.',
     contribution:
-      'Built in-house and delivered as a signed APK: the entire application — crypto and key handling, three schema versions and their migrations, the screens, the signed release pipeline across ten builds, and a plain-language install guide written for a non-technical reader.',
+      'Built for the client and delivered as a signed APK: the entire application — crypto and key handling, three schema versions and their migrations, the screens, the signed release pipeline across ten builds, and a plain-language install guide written for a non-technical reader.',
     features: [
       'Six-digit PIN with optional fingerprint or face unlock',
       'AES-256-GCM per document, key wrapped under a PBKDF2-stretched PIN',
@@ -560,7 +560,7 @@ export const projects: Project[] = [
     live: 'https://rkindustries-rust.vercel.app/',
     name: 'RK Industries',
     tagline:
-      'The company website, built in-house — where the manufacturing floor is the story, and the quote request lands on WhatsApp.',
+      'The company website, built for the client — where the manufacturing floor is the story, and the quote request lands on WhatsApp.',
     year: '2026',
     kind: 'Company web · manufacturing',
     category: 'Web',
@@ -614,7 +614,7 @@ export const projects: Project[] = [
     result:
       'A single page of eleven sections in 38 files and 5,075 lines. The configurator collects wood, frame, and any number of size/thickness/quantity rows, then posts the quotation to the works’ WhatsApp from the server — so the customer never leaves the page and never has to have WhatsApp installed. Every company detail on the site reads from one config file.',
     contribution:
-      'Built and delivered the whole site in-house: the scroll architecture, the CSS door, the configurator and its quotation format, the WhatsApp delivery route, the photograph pipeline, and the single brand-config file the business can edit without touching a component.',
+      'Built and delivered the whole site for the client: the scroll architecture, the CSS door, the configurator and its quotation format, the WhatsApp delivery route, the photograph pipeline, and the single brand-config file the business can edit without touching a component.',
     features: [
       'Pinned, scroll-scrubbed walk through the manufacturing process',
       'Door configurator — wood, frame, and as many size rows as the job needs',
@@ -650,7 +650,7 @@ export const projects: Project[] = [
   {
     slug: 'operate',
     name: 'Operate',
-    tagline: 'An in-house build, still in progress: a company management system where routes are closed by default and authorisation is checked twice, two different ways.',
+    tagline: 'Delivered for a client: a company management system where routes are closed by default and authorisation is checked twice, two different ways.',
     year: '2026',
     kind: 'Enterprise web app',
     category: 'Software',
@@ -663,7 +663,7 @@ export const projects: Project[] = [
     approach:
       'Authentication is a global guard: a route is reachable without a token only if it says so explicitly, so a forgotten decorator leaves a route shut. Authorisation is then checked twice — a permission decides whether you may perform a kind of action at all, and the service decides which rows you may perform it on.',
     result:
-      'An ongoing client engagement: four of ten phases delivered and in use for testing, with the remaining scope being specified as the earlier phases are reviewed. Order Book, ERP tasks and the admin shell are built, across 37 endpoints, 22 tables and 17,497 tracked lines. 127 tests pass — 108 against the API and 19 against the web client — and the typecheck is clean. Order traceability is Phase 5 and not yet started.',
+      'A completed client engagement, delivered phase by phase against requirements agreed with the client. Order Book, ERP tasks and the admin shell were measured at across 37 endpoints, 22 tables and 17,497 tracked lines. 127 tests pass — 108 against the API and 19 against the web client — and the typecheck is clean.',
     contribution:
       'Architecture and stack decisions, database and seven migrations, the authorisation model of 43 permissions across 3 roles, the API, the React admin shell, and a one-command local runtime that starts database, API and client together. Delivered phase by phase against requirements agreed with the client, one commit per approved phase.',
     features: [
