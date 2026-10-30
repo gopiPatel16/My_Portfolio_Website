@@ -16,7 +16,7 @@ export const profile = {
    * the company website, PrimeGold, Operate and DocVault; for Bharti
    * Engineering & Construction the corporate website. A declared figure.
    */
-  freelanceProjects: 5,
+  freelanceProjects: 5 as number,
 
   /** Built from the resume script; the site serves a copy of the same PDF. */
   resume: {
